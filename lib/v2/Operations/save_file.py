@@ -1,4 +1,4 @@
-from lib.v2.Logger.logs import logger
+from ..Logger.logs import logger
 
 
 class SaveFile(object):
