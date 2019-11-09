@@ -8,17 +8,18 @@ techniques with the *pyspark* back-end architecture to clean and prepare TBs of 
 
 ## Main Features
 Here are just a few of the things that **Mltrons-auto-data-prep** does well:
-	- Handle Any size of data even in Tbs using **Py-spark**
 
- 	- Filter out **Features** with Null values more than the threshold
+- Handle Any size of data even in Tbs using **Py-spark**
 
-	- Filter out **Features** with same value for all rows
+- Filter out **Features** with Null values more than the threshold
 
-	- Automatically detects the data type of features
+- Filter out **Features** with same value for all rows
 
-	- Automatically detects datetime features and split in multiple usefull features
+- Automatically detects the data type of features
 
-	- Automatically detects features containing **URLs** and remove duplications
+- Automatically detects datetime features and split in multiple usefull features
 
-	- Automatically detects **Skewed** features and minimize skewness
+- Automatically detects features containing **URLs** and remove duplications
+
+- Automatically detects **Skewed** features and minimize skewness
 
