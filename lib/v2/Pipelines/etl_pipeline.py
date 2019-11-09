@@ -2,20 +2,20 @@ from lib.v2.imports import *
 
 # Including Transformers
 
-from lib.v2.Transformers.url_transformer import *
-from lib.v2.Transformers.date_transformer import *
-from lib.v2.Transformers.drop_transformer import *
-from lib.v2.Transformers.skewness_transformer import *
-from lib.v2.Transformers.type_to_double_transformer import *
-from lib.v2.Transformers.change_columns_order import *
+from ..Transformers.url_transformer import *
+from ..Transformers.date_transformer import *
+from ..Transformers.drop_transformer import *
+from ..Transformers.skewness_transformer import *
+from ..Transformers.type_to_double_transformer import *
+from ..Transformers.change_columns_order import *
 # Including Middlewares
 
-from lib.v2.Middlewares.dtype_conversion import *
-from lib.v2.Middlewares.fetch_url_columns import *
-from lib.v2.Middlewares.fetch_skewed_columns import *
-from lib.v2.Middlewares.drop_col_with_null_val import *
-from lib.v2.Middlewares.drop_col_with_same_val import *
-from lib.v2.Middlewares.fetch_datetime_columns import *
+from ..Middlewares.dtype_conversion import *
+from ..Middlewares.fetch_url_columns import *
+from ..Middlewares.fetch_skewed_columns import *
+from ..Middlewares.drop_col_with_null_val import *
+from ..Middlewares.drop_col_with_same_val import *
+from ..Middlewares.fetch_datetime_columns import *
 
 
 class EtlPipeline():

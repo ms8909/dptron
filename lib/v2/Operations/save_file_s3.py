@@ -1,5 +1,5 @@
 # imports
-from lib.v2.Logger.logs import logger
+from ..Logger.logs import logger
 
 
 class saveFileS3(object):

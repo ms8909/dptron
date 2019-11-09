@@ -15,7 +15,7 @@ import pyspark
 from pyspark.sql import SparkSession
 import time
 import os
-from lib.v2.Logger.logs import logger
+from .Logger.logs import logger
 from urllib.parse import urlparse
 import re
 from scipy import stats
