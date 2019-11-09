@@ -1,6 +1,6 @@
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
-from lib.v2.Logger.logs import logger
+from ..Logger.logs import logger
 
 
 # imports
