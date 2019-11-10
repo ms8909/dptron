@@ -31,7 +31,9 @@ class UrlTransformer(Transformer, DefaultParamsReadable, DefaultParamsWritable):
         #                    self.udf_remove_stop_words(self.base_url)(
         #                        funct.trim(funct.lower(funct.col(self.getColumn()).cast("string")))))
         # df=df.drop(self.getColumn())
-
+        print("inside transform")
+        print(len(self.getColumn()))
+        print(self.getColumn())
         df = df.withColumn(self.getColumn() ,
                            self.udf_remove_stop_words(self.base_url)(
                                funct.trim(funct.lower(funct.col(self.getColumn()).cast("string")))))
