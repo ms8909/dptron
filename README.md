@@ -79,9 +79,9 @@ res = rf.read(address="test.csv", local="yes", file_format="csv", s3={})
 - return the list of columns containing null values more then the threshold
 
 ```python
-from lib.v2.Middlewares.drop_col_with_null_val import DropNullValueCol
+from mltronsAutoDataPrep.lib.v2.Middlewares.drop_col_with_null_val import DropNullValueCol
 
-res = read.read("test.csv", file_format='csv')
+res = rf.read("test.csv", file_format='csv')
 
 drop_col = DropNullValueCol()
 columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
@@ -96,7 +96,7 @@ df = res.drop(*columns_to_drop)
 - return the list of columns containing same values
 
 ```python
-from lib.v2.Middlewares.drop_col_with_same_val import DropSameValueColumn
+from mltronsAutoDataPrep.lib.v2.Middlewares.drop_col_with_same_val import DropSameValueColumn
 
 
 drop_same_val_col = DropSameValueColumn()
@@ -112,7 +112,7 @@ df = res.drop(*columns_to_drop)
 
 ```python
 
-from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+from mltronsAutoDataPrep.lib.v2.Pipelines.etl_pipeline import EtlPipeline
 
 etl_pipeline = EtlPipeline()
 etl_pipeline.custom_url_transformer(res)
@@ -129,7 +129,7 @@ res = etl_pipeline.transform(res)
 
 
 ```python
-from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+from mltronsAutoDataPrep.lib.v2.Pipelines.etl_pipeline import EtlPipeline
 
 
 etl_pipeline = EtlPipeline()
@@ -145,7 +145,7 @@ res = etl_pipeline.transform(res)
 
 
 ```python
-from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+from mltronsAutoDataPrep.lib.v2.Pipelines.etl_pipeline import EtlPipeline
 
 
 etl_pipeline = EtlPipeline()
@@ -163,7 +163,7 @@ res = etl_pipeline.transform(res)
 - Minimize skewness using statistical methods
 
 ```python
-from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+from mltronsAutoDataPrep.lib.v2.Pipelines.etl_pipeline import EtlPipeline
 
 
 etl_pipeline = EtlPipeline()
