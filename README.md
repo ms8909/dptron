@@ -139,12 +139,14 @@ res = etl_pipeline.transform(res)
 ```
 
 
-### 6 . Filling Missing Values
+### 6. Filling Missing Values 
 
 - Using Deep Learning techniques Missing values are filled
 
 
 ```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
 
 etl_pipeline = EtlPipeline()
 etl_pipeline.custom_filling_missing_val(res)
@@ -153,3 +155,18 @@ res = etl_pipeline.transform(res)
 ```
 
 
+### 7. Removing Skewness from features
+
+
+- Automatically detects which column contains skewness
+
+- Minimize skewness using statistical methods
+
+```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_skewness_transformer(res)
+res = etl_pipeline.transform(res)
+```
