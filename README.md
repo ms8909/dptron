@@ -119,3 +119,21 @@ etl_pipeline.custom_url_transformer(res)
 res = etl_pipeline.transform(res)
 
 ```
+
+
+### 5. Split Date Time features
+
+- Automatically detects features containing date/time
+
+- Split date time into usefull multiple feautures (day,month,year etc)
+
+
+```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_date_transformer(res)
+res = etl_pipeline.transform(res)
+
+```

@@ -27,8 +27,16 @@ res = read.read("./run/4alan_data_clean.csv", file_format='csv')
 # df = res.drop(*columns_to_drop)
 
 #### url columns cleaned
-etl_pipeline = EtlPipeline()
-etl_pipeline.custom_url_transformer(res)
-res = etl_pipeline.transform(res)
+# etl_pipeline = EtlPipeline()
+# etl_pipeline.custom_url_transformer(res)
+# res = etl_pipeline.transform(res)
 
+####
+
+
+#### datetime  columns split
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_date_transformer(res)
+res = etl_pipeline.transform(res)
+res.toPandas().to_csv("check1.csv")
 ####
