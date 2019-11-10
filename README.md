@@ -4,11 +4,13 @@
 
 **Mltrons-auto-data-prep** is a Python package providing flexible and automated way of 
 data preparation in any size of the raw data.It uses **Machine Learning** and **Deep Leaning**
-techniques with the *pyspark* back-end architecture to clean and prepare TBs of data on clusters at scale.
+techniques with the **pyspark** back-end architecture to clean and prepare TBs of data on clusters at scale.
 
 
 ## Main Features
 Here are just a few of the things that **Mltrons-auto-data-prep** does well:
+
+- Data Can be read from multiple Sources such as **S3 bucket** or **Local PC**
 
 - Handle Any size of data even in Tbs using **Py-spark**
 
@@ -42,8 +44,24 @@ pip install mltronsAutoDataPrep
 
 ## Dependencies
 - [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
-- [NumPy](https://www.numpy.org): 
+- [NumPy](https://www.numpy.org)
 - [pandas](https://pandas.pydata.org)
-- [python-dateutil](https://labix.org/python-dateutil): 
-- [pytz](https://pythonhosted.org/pytz):
+- [python-dateutil](https://labix.org/python-dateutil) 
+- [pytz](https://pythonhosted.org/pytz)
 - see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
+
+## How to use 
+#### Reading data functions
+
+- **address** to give the path of the file
+
+- **local** to give the file exist on local pc or s3 bucket
+
+- **file_format** to give the format of the file (csv,excel,parquet)
+
+- **s3** s3 bucket credentials if data on s3 bucket
+
+```python
+from mltronsAutoDataPrep.lib.v2.Operations.readfile import ReadFile as rf
+res = rf.read(address="test.csv", local="yes", file_format="csv", s3={})
+```
