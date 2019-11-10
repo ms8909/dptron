@@ -1,4 +1,4 @@
-from lib.v2.imports import *
+from ..imports import *
 
 class ChangeColumnsOrder(Transformer, DefaultParamsReadable, DefaultParamsWritable):
     column = Param(Params._dummy(), "column", "column for transformation", typeConverter=TypeConverters.toString)
