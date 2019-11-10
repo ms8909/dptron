@@ -6,13 +6,16 @@ class FetchUrlCol(object):
         pass
 
     @staticmethod
-    def fetch_columns_containing_url(df,existed_variables=[]):
+    def fetch_columns_containing_url(df, existed_variables=[]):
         """
         Automatically fetch column name contains urls
         :param df: orig dataframe
         :return: return list of columns containing urls
         """
+
         columns = existed_variables
+        if len(existed_variables) < 1:
+            columns = df.columns
         try:
             col_dict = df.select([funct.col(col).rlike(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))').alias(col) for col in
                                   columns]).collect()[0].asDict()

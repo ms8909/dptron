@@ -63,6 +63,7 @@ pip install mltronsAutoDataPrep
 
 - **s3** s3 bucket credentials if data on s3 bucket
 
+
 ```python
 from mltronsAutoDataPrep.lib.v2.Operations.readfile import ReadFile as rf
 
@@ -103,4 +104,69 @@ columns_to_drop = drop_same_val_col.delete_same_val_com(res)
 df = res.drop(*columns_to_drop)
 ```
 
+### 4. Cleaned Url Features
 
+- Automatically detects features containing Urls
+
+- Pipeline structure to clean the urls using **NLP** techniques
+
+```python
+
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_url_transformer(res)
+res = etl_pipeline.transform(res)
+
+```
+
+
+### 5. Split Date Time features
+
+- Automatically detects features containing date/time
+
+- Split date time into usefull multiple feautures (day,month,year etc)
+
+
+```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_date_transformer(res)
+res = etl_pipeline.transform(res)
+
+```
+
+
+### 6. Filling Missing Values 
+
+- Using Deep Learning techniques Missing values are filled
+
+
+```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_filling_missing_val(res)
+res = etl_pipeline.transform(res)
+
+```
+
+
+### 7. Removing Skewness from features
+
+
+- Automatically detects which column contains skewness
+
+- Minimize skewness using statistical methods
+
+```python
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_skewness_transformer(res)
+res = etl_pipeline.transform(res)
+```

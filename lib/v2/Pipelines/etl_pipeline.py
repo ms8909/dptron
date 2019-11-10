@@ -377,7 +377,7 @@ class EtlPipeline():
 
         """Find all variables that contain time"""
         n = FetchDateTimeCol()
-        variables = n.run(df, existed_variables=self.param["existed_variables"])
+        variables = n.find_datetime_features(df, existed_variables=self.param["existed_variables"])
         return variables
 
     def variables_with_same_val(self, df):
@@ -459,6 +459,82 @@ class EtlPipeline():
         for col in skewed_columns:
             skewed_data = SkewnessTransformer(column=col)
             self.stages += [skewed_data]
+
+    def custom_skewness_transformer(self, df):
+        """
+
+        :param df:
+        :return:
+        """
+        try:
+            n = FetchSkewedCol()
+            features = n.skewed_features(df, existed_variables=df.columns)
+            self.skewed_transformer(features)
+            model = Pipeline(stages=self.stages)
+            self.pipeline = model.fit(df)
+
+
+        except Exception as e:
+            print(e)
+
+    def custom_filling_missing_val(self, df):
+        try:
+            self.param['existed_variables'] = df.columns
+            numeric_variables = self.find_variables_types(df.dtypes)
+            self.int_to_double(df.dtypes, numeric_variables)
+            self.handle_missing_values(numeric_variables)
+            model = Pipeline(stages=self.stages)
+            self.pipeline = model.fit(df)
+
+        except Exception as e:
+            logger.error(e)
+
+    def custom_date_transformer(self, df):
+        """
+
+        :param df:
+        :return:
+        """
+        time_variables = self.find_all_time_variables(df)
+        stage = self.custom_datetime_pipeline(time_variables)
+        print(stage)
+        pi = Pipeline(stages=stage)
+        self.pipeline = pi.fit(df)
+
+    def custom_datetime_pipeline(self, time_variables):
+        stages = []
+        for v in time_variables:
+            time_data = DateTransformer(column=v)
+            stages += [time_data]
+        return stages
+
+    def custom_url_transformer(self, df):
+        try:
+            url_variables = self.find_variables_containing_urls(df)
+            logger.warn("done")
+        except Exception as e:
+            logger.error(e)
+            logger.error("in finding variables containing urls. 5")
+            return False
+        try:
+            var = self.custom_urls_pipeline(url_variables)
+            pi = Pipeline(stages=var)
+
+            self.pipeline = pi.fit(df)
+        except Exception as e:
+            logger.error(e)
+            logger.error("in fixing variables containing urls. 5")
+            return False
+
+    def custom_urls_pipeline(self, variables=[]):
+
+        """Clean all the variables containing urls"""
+        stages = []
+        for v in variables:
+            d = UrlTransformer(column=v)
+            stages += [d]
+
+        return stages
 
 
 """ 
