@@ -10,16 +10,18 @@ class DropSameValueColumn(object):
         self.models = {}
         self.df = None
 
-    def run(self, df, existed_variables=[]):
+    def delete_same_val_com(self, df, existed_variables=[]):
 
         """
         remove columns which contains only one kind of value
         :param df: original dataframe containing data
         :return: return dataframe after removing columns
         """
-        
-        columns= existed_variables
-        
+        columns = existed_variables
+
+        if len(existed_variables) < 1:
+            columns = df.columns
+
         try:
 
             col_counts = \

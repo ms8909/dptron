@@ -384,7 +384,7 @@ class EtlPipeline():
 
         """find variables that contain save value."""
         n = DropSameValueColumn()
-        variables = n.run(df, existed_variables=self.param["existed_variables"])
+        variables = n.delete_same_val_com(df, existed_variables=self.param["existed_variables"])
         return variables
 
     def drop_these_variables(self, variables):
