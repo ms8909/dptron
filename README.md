@@ -52,7 +52,8 @@ pip install mltronsAutoDataPrep
 
 ## How to use 
 
-#### 1. Reading data functions
+
+### 1. Reading data functions
 
 - **address** to give the path of the file
 
@@ -68,7 +69,9 @@ from mltronsAutoDataPrep.lib.v2.Operations.readfile import ReadFile as rf
 res = rf.read(address="test.csv", local="yes", file_format="csv", s3={})
 ```
 
-#### 2. Drop Features containing Null of certain threshold
+
+
+### 2. Drop Features containing Null of certain threshold
 
 - provide dataframe with threshold of null values 
 
@@ -83,6 +86,7 @@ drop_col = DropNullValueCol()
 columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
 df = res.drop(*columns_to_drop)
 ```
+
 
 ### 3. Drop Features containing same values 
 
