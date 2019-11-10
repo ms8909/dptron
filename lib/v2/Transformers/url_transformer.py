@@ -1,4 +1,4 @@
-from lib.v2.imports import *
+from ..imports import *
 from nltk.corpus import stopwords
 
 
