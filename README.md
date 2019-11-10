@@ -63,6 +63,7 @@ pip install mltronsAutoDataPrep
 
 - **s3** s3 bucket credentials if data on s3 bucket
 
+
 ```python
 from mltronsAutoDataPrep.lib.v2.Operations.readfile import ReadFile as rf
 
@@ -103,4 +104,18 @@ columns_to_drop = drop_same_val_col.delete_same_val_com(res)
 df = res.drop(*columns_to_drop)
 ```
 
+### 4. Cleaned Url Features
 
+- Automatically detects features containing Urls
+
+- Pipeline structure to clean the urls using **NLP** techniques
+
+```python
+
+from lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_url_transformer(res)
+res = etl_pipeline.transform(res)
+
+```

@@ -345,11 +345,12 @@ class EtlPipeline():
     def clean_variable_containing_urls(self, df, variables=[]):
 
         """Clean all the variables containing urls"""
+        stages= []
         for v in variables:
             d = UrlTransformer(column=v)
-            self.stages += [d]
+            stages += [d]
 
-        return True
+        return stages
 
     def change_order_variables(self):
 
@@ -377,7 +378,7 @@ class EtlPipeline():
 
         """Find all variables that contain time"""
         n = FetchDateTimeCol()
-        variables = n.run(df, existed_variables=self.param["existed_variables"])
+        variables = n.find_datetime_features(df, existed_variables=self.param["existed_variables"])
         return variables
 
     def variables_with_same_val(self, df):
@@ -459,6 +460,24 @@ class EtlPipeline():
         for col in skewed_columns:
             skewed_data = SkewnessTransformer(column=col)
             self.stages += [skewed_data]
+
+    def custom_url_transformer(self, df):
+        try:
+            url_variables = self.find_variables_containing_urls(df)
+            logger.warn("done")
+        except Exception as e:
+            logger.error(e)
+            logger.error("in finding variables containing urls. 5")
+            return False
+        try:
+            var = self.clean_variable_containing_urls(url_variables)
+            pi = Pipeline(stages=var)
+
+            self.pipeline = pi.fit(df)
+        except Exception as e:
+            logger.error(e)
+            logger.error("in fixing variables containing urls. 5")
+            return False
 
 
 """ 
