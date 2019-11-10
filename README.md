@@ -51,7 +51,8 @@ pip install mltronsAutoDataPrep
 - see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
 
 ## How to use 
-#### Reading data functions
+
+#### 1. Reading data functions
 
 - **address** to give the path of the file
 
@@ -63,5 +64,23 @@ pip install mltronsAutoDataPrep
 
 ```python
 from mltronsAutoDataPrep.lib.v2.Operations.readfile import ReadFile as rf
+
 res = rf.read(address="test.csv", local="yes", file_format="csv", s3={})
 ```
+
+#### 2. Drop Features containing Null of certain threshold
+
+- provide dataframe with threshold of null values 
+
+- return the list of columns containing null values more then the threshold
+
+```python
+from lib.v2.Middlewares.drop_col_with_null_val import DropNullValueCol
+
+res = read.read("test.csv", file_format='csv')
+
+drop_col = DropNullValueCol()
+columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
+df = res.drop(*columns_to_drop)
+```
+
