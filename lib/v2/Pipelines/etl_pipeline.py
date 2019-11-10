@@ -460,6 +460,19 @@ class EtlPipeline():
             skewed_data = SkewnessTransformer(column=col)
             self.stages += [skewed_data]
 
+    def custom_filling_missing_val(self, df):
+        try:
+            self.param['existed_variables'] = df.columns
+            numeric_variables = self.find_variables_types(df.dtypes)
+            self.int_to_double(df.dtypes, numeric_variables)
+            self.handle_missing_values(numeric_variables)
+            model = Pipeline(stages=self.stages)
+            self.pipeline = model.fit(df)
+
+        except Exception as e:
+            logger.error(e)
+
+
     def custom_date_transformer(self, df):
         """
 

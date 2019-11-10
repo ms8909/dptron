@@ -137,3 +137,19 @@ etl_pipeline.custom_date_transformer(res)
 res = etl_pipeline.transform(res)
 
 ```
+
+
+### 6 . Filling Missing Values
+
+- Using Deep Learning techniques Missing values are filled
+
+
+```python
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_filling_missing_val(res)
+res = etl_pipeline.transform(res)
+
+```
+
+

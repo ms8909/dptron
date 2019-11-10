@@ -35,8 +35,16 @@ res = read.read("./run/4alan_data_clean.csv", file_format='csv')
 
 
 #### datetime  columns split
+# etl_pipeline = EtlPipeline()
+# etl_pipeline.custom_date_transformer(res)
+# res = etl_pipeline.transform(res)
+# res.toPandas().to_csv("check1.csv")
+####
+
+
+#### fill missing values  columns split
 etl_pipeline = EtlPipeline()
-etl_pipeline.custom_date_transformer(res)
+etl_pipeline.custom_filling_missing_val(res)
 res = etl_pipeline.transform(res)
-res.toPandas().to_csv("check1.csv")
+res.toPandas().to_csv("check2.csv")
 ####
