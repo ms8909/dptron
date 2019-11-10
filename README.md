@@ -1,4 +1,4 @@
-# mltrons-auto-data-prep :Tool kit that automate the Data Preparation
+# mltrons-auto-data-prep :Tool kit that automate Data Preparation
 
 ## What is it?
 
@@ -83,4 +83,20 @@ drop_col = DropNullValueCol()
 columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
 df = res.drop(*columns_to_drop)
 ```
+
+### 3. Drop Features containing same values 
+
+- provide dataframe 
+
+- return the list of columns containing same values
+
+```python
+from lib.v2.Middlewares.drop_col_with_same_val import DropSameValueColumn
+
+
+drop_same_val_col = DropSameValueColumn()
+columns_to_drop = drop_same_val_col.delete_same_val_com(res)
+df = res.drop(*columns_to_drop)
+```
+
 
