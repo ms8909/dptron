@@ -1,4 +1,4 @@
-# mltrons-auto-data-prep :Tool kit that automate Data Preparation
+# mltrons-auto-data-prep :Tool-kit that automates Data Preparation
 
 ## What is it?
 
