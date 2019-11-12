@@ -43,6 +43,7 @@ pip install mltronsAutoDataPrep
 ```
 
 ## Dependencies
+- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
 - [NumPy](https://www.numpy.org)
 - [pandas](https://pandas.pydata.org)
