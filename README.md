@@ -74,6 +74,7 @@ Example: “C:\Program FIles\Java\jdk1.8.0_161” --> “C:\Progra~1\Java\jdk1.8
 Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
 
 **3. Download Java JDK 8 from [Java’s official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+
 Set the following environment variables:
 
 **4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
