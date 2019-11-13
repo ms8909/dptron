@@ -35,6 +35,29 @@ https://github.com/ms8909/mltrons-auto-data-prep
 The **pypi** project is at :
 https://pypi.org/project/mltronsAutoDataPrep/
 
+## How to install Java 8 (only supported by java 8)
+### In Mac Os
+In your terminal, write:
+
+1. brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+
+Now, you need to set java8 as your default version. To do this:
+
+2. First run /usr/libexec/java_home -V which will output something like the following:
+
+Matching Java Virtual Machines (3):
+```
+1.8.0_05, x86_64:   "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
+1.6.0_65-b14-462, x86_64:   "Java SE 6" /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+1.6.0_65-b14-462, i386: "Java SE 6" /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
+```
+
+Pick the version you want to be the default (i.e 1.6.0_65-b14-462) then:
+
+3. export JAVA_HOME=/usr/libexec/java_home -v 1.8
+
+
 
 ## How to install
 
