@@ -44,7 +44,7 @@ In your terminal, write:
 Now, you need to set java8 as your default version. To do this:
 First run 
 
-**2. /usr/libexec/java_home -V **
+**2. /usr/libexec/java_home -V**
 
 which will output something like the following:
 Matching Java Virtual Machines (3):
@@ -76,9 +76,9 @@ Before you start make sure you have Java 8 installed and the environment variabl
 **3. Download Java JDK 8 from [Java’s official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
 Set the following environment variables:
 
-**JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
+**4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
 
-**PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
+**5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
 
 
 ## How to install
