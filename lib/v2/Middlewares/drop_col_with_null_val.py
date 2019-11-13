@@ -24,6 +24,7 @@ class DropNullValueCol(object):
                 df.select(
                     [funct.count(funct.when(funct.col(col).isNull() |
                                             funct.col(col).contains("NULL") |
+                                            funct.col(col).contains("N/A") |
                                             funct.col(col).contains("null") |
                                             funct.col(col).contains("Null") |
 

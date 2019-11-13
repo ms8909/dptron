@@ -7,18 +7,20 @@ from lib.v2.Middlewares.fetch_url_columns import FetchUrlCol
 from lib.v2.Transformers.url_transformer import UrlTransformer
 from lib.v2.Pipelines.etl_pipeline import EtlPipeline
 from pyspark.ml import Pipeline
+import pandas as pd
+res = read.read("./run/1data_clean.csv", file_format='csv')
+# df_pd = pd.read_csv("./run/1data_clean.csv")
 
-res = read.read("./run/4alan_data_clean.csv", file_format='csv')
-
+print(res.columns)
 #### reading function
 # res = read.read("./run/4alan_data_clean.csv", file_format='csv')
 # res.show()
 
 #### drop null value columns
-# drop_col = DropNullValueCol()
-# columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
-# print(columns_to_drop)
-# df = res.drop(*columns_to_drop)
+drop_col = DropNullValueCol()
+columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
+print(columns_to_drop)
+df = res.drop(*columns_to_drop)
 
 #### drop same value columns
 # drop_same_val_col = DropSameValueColumn()
@@ -51,8 +53,8 @@ res = read.read("./run/4alan_data_clean.csv", file_format='csv')
 
 
 #### fill skewed_columns
-etl_pipeline = EtlPipeline()
-etl_pipeline.custom_skewness_transformer(res)
-res = etl_pipeline.transform(res)
-res.toPandas().to_csv("check3.csv")
+# etl_pipeline = EtlPipeline()
+# etl_pipeline.custom_skewness_transformer(res)
+# res = etl_pipeline.transform(res)
+# res.toPandas().to_csv("check3.csv")
 ####

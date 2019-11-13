@@ -42,7 +42,7 @@ class ReadFileFromLocal(object):
         :return:
         """
         try:
-            self.dataframe = self.spark_session.read.csv(path, inferSchema=True, header=True)
+            self.dataframe = self.spark_session.read.csv(path, header=True,multiLine=True,inferSchema=True)
             return self.dataframe
         except Exception as e:
             logger.error(e)
