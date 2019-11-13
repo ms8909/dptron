@@ -61,19 +61,19 @@ Pick the version you want to be the default (i.e 1.6.0_65-b14-462) then:
 
 ### In Windows Os
 
-It’s important that you replace all the paths that include the folder “Program Files” or “Program Files (x86)” as explained below to avoid future problems when running Spark.
+It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" as explained below to avoid future problems when running Spark.
 If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables
 
-**1. Replace “Program Files” with “Progra~1”**
+**1. Replace "Program Files" with "Progra~1"**
 
-**2. Replace “Program Files (x86)” with “Progra~2”**
+**2. Replace "Program Files (x86)" with "Progra~2"**
 
 ```
-Example: “C:\Program FIles\Java\jdk1.8.0_161” --> “C:\Progra~1\Java\jdk1.8.0_161”
+Example: "C:\Program FIles\Java\jdk1.8.0_161" --> "C:\Progra~1\Java\jdk1.8.0_161"
 ```
 Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
 
-**3. Download Java JDK 8 from [Java’s official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+**3. Download Java JDK 8 from [Java's official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
 
 Set the following environment variables:
 
