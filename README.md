@@ -35,7 +35,7 @@ https://github.com/ms8909/mltrons-auto-data-prep
 The **pypi** project is at :
 https://pypi.org/project/mltronsAutoDataPrep/
 
-## How to install Java 8 (only supported by java 8)
+## How to install Java 8 (only supported by pyspark)
 ### In Mac Os
 In your terminal, write:
 
@@ -43,8 +43,9 @@ In your terminal, write:
 
 Now, you need to set java8 as your default version. To do this:
 
-2. First run /usr/libexec/java_home -V which will output something like the following:
+2. First run /usr/libexec/java_home -V 
 
+which will output something like the following:
 Matching Java Virtual Machines (3):
 ```
 1.8.0_05, x86_64:   "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
@@ -57,6 +58,24 @@ Pick the version you want to be the default (i.e 1.6.0_65-b14-462) then:
 
 3. export JAVA_HOME=/usr/libexec/java_home -v 1.8
 
+### In Windows Os
+
+It’s important that you replace all the paths that include the folder “Program Files” or “Program Files (x86)” as explained below to avoid future problems when running Spark.
+If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables
+1. Replace “Program Files” with “Progra~1”
+2. Replace “Program Files (x86)” with “Progra~2”
+
+```
+Example: “C:\Program FIles\Java\jdk1.8.0_161” --> “C:\Progra~1\Java\jdk1.8.0_161”
+```
+Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
+
+3. Download Java JDK 8 from [Java’s official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+Set the following environment variables:
+
+JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161
+
+PATH += C:\Progra~1\Java\jdk1.8.0_161\bin
 
 
 ## How to install
