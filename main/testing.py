@@ -23,38 +23,38 @@ print(columns_to_drop)
 df = res.drop(*columns_to_drop)
 
 #### drop same value columns
-# drop_same_val_col = DropSameValueColumn()
-# columns_to_drop = drop_same_val_col.delete_same_val_com(res)
-# print(columns_to_drop)
-# df = res.drop(*columns_to_drop)
+drop_same_val_col = DropSameValueColumn()
+columns_to_drop = drop_same_val_col.delete_same_val_com(res)
+print(columns_to_drop)
+df = res.drop(*columns_to_drop)
 
 #### url columns cleaned
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_url_transformer(res)
-# res = etl_pipeline.transform(res)
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_url_transformer(res)
+res = etl_pipeline.transform(res)
 
 ####
 
 
 #### datetime  columns split
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_date_transformer(res)
-# res = etl_pipeline.transform(res)
-# res.toPandas().to_csv("check1.csv")
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_date_transformer(res)
+res = etl_pipeline.transform(res)
+res.toPandas().to_csv("check1.csv")
 ####
 
 
 #### fill missing values  columns split
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_filling_missing_val(res)
-# res = etl_pipeline.transform(res)
-# res.toPandas().to_csv("check2.csv")
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_filling_missing_val(res)
+res = etl_pipeline.transform(res)
+res.toPandas().to_csv("check2.csv")
 ####
 
 
 #### fill skewed_columns
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_skewness_transformer(res)
-# res = etl_pipeline.transform(res)
-# res.toPandas().to_csv("check3.csv")
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_skewness_transformer(res)
+res = etl_pipeline.transform(res)
+res.toPandas().to_csv("check3.csv")
 ####
