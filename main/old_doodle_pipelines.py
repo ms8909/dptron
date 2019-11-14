@@ -2,10 +2,10 @@ import sys
 
 
 from lib.v2.columns_dropping_nan import ColumnsDroppingContainsNan
-from lib_v2.columns_dropping_with_same_value import ColumnsDroppingSameValue
-from lib_v2.removing_duplication_urls import RemovingDuplicationUrl
-from lib_v2.datetime_formatting import DatetimeFormatting
-from lib_v2.minimize_skewness import MinimizeSkewness
+from lib.v2.columns_dropping_with_same_value import ColumnsDroppingSameValue
+from lib.v2.removing_duplication_urls import RemovingDuplicationUrl
+from lib.v2.datetime_formatting import DatetimeFormatting
+from lib.v2.minimize_skewness import MinimizeSkewness
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from lib_v2.logs import logger, file_logs
