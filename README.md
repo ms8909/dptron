@@ -26,18 +26,16 @@ Decision making is better & easier if the data is clean otherwise it’s garbage
 
 Installation
 ### On Mac Os
-In your terminal, write:
-
-
+Open up your terminal and install Java8 required for pySpark:
 ```sh
 brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
 ```
-Now, you need to set java8 as your default version. To do this:
-First run 
+After installing Java8, set it as your default Java version:
+```sh
+/usr/libexec/java_home -V**
+```
+This will output thefollowing:
 
-**2. /usr/libexec/java_home -V**
-
-which will output something like the following:
 Matching Java Virtual Machines (3):
 ```
 1.8.0_05, x86_64:   "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
@@ -47,8 +45,14 @@ Matching Java Virtual Machines (3):
 ```
 
 Pick the version you want to be the default (i.e 1.6.0_65-b14-462) then:
+```sh
+export JAVA_HOME=/usr/libexec/java_home -v 1.8**
+```
 
-**3. export JAVA_HOME=/usr/libexec/java_home -v 1.8**
+After you've successfully install Java8, install dptron with the following command: 
+```sh
+pip install mltronsAutoDataPrep
+```
 
 ### In Windows Os
 
@@ -75,9 +79,7 @@ Set the following environment variables:
 
 ## How to install
 
-```sh
-pip install mltronsAutoDataPrep
-```
+
 
 ## Dependencies
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
