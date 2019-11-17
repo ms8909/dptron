@@ -4,7 +4,7 @@ https://pypi.org/project/mltronsAutoDataPrep/
 
 ## Introduction
 
-Data is the most important element for data analysis. Real world data is unclean with a lot of spelling errors, missing values, formatting issues, skewness, no encoding or aggregation which makes it the most time-consuming & cumbersome task for analysts & scientists. As most of the scientists spend time around 80% of their time cleaning & preparing data, therefore we’re introducing dptron to make that process extremely easier and faster!
+Data is the most important element for data analysis. Real world data is unclean with a lot of spelling errors, missing values, formatting issues, skewness, no encoding or aggregation which makes it the most time-consuming & cumbersome task for analysts & scientists. As most scientists spend around 80% of their time cleaning & preparing data, therefore we’re introducing dptron to make that process extremely easier and faster!
 
 Dptron is an in-memory platform built for distributed & scalable data cleaning & preparation. DPtron is written in Python and is built on PySpark to deal with large amounts of data seamlessly. It uses an implementation of machine learning and deep learning algorithms to perform important data cleaning & preparation steps automatically. Dptron is extensible so that developers, analysts & scientists can streamline the process of data cleaning & preparation for better decision making while becoming more productive. 
 
@@ -22,18 +22,19 @@ Decision making is better & easier if the data is clean otherwise it’s garbage
 - Treats spelling mistakes and other inconsistencies in other variables (next iteration)
 
 
-## Get started with dptron!
+## Getting started!
 
-Installation
 ### On Mac Os
 In your terminal, write:
-
 
 **1 ```sh
 brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
 ```
 Now, you need to set java8 as your default version. To do this:
 First run 
+
+
+
 
 **2. /usr/libexec/java_home -V**
 
