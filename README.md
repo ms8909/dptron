@@ -25,7 +25,7 @@ Decision making is better & easier if the data is clean otherwise it’s garbage
 ## Get started with dptron!
 
 Installation
-### On Mac Os
+### Installing On Mac Os
 Open up your terminal and install Java8 required for pySpark:
 ```sh
 brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
@@ -54,28 +54,32 @@ After you've successfully install Java8, install dptron with the following comma
 pip install mltronsAutoDataPrep
 ```
 
-### In Windows Os
+### Installing on Windows
 
-It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" as explained below to avoid future problems when running Spark.
-If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables
+It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" to avoid future problems while running Spark.
 
-**1. Replace "Program Files" with "Progra~1"**
+If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables:
 
-**2. Replace "Program Files (x86)" with "Progra~2"**
+**Step 1. Replace "Program Files" with "Progra~1"**
 
+**Step 2. Replace "Program Files (x86)" with "Progra~2"**
 ```
 Example: "C:\Program FIles\Java\jdk1.8.0_161" --> "C:\Progra~1\Java\jdk1.8.0_161"
 ```
 Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
 
-**3. Download Java JDK 8 from [Java's official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+**Step 3. Download Java JDK 8 from [Java's official website] (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
 
 Set the following environment variables:
 
-**4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
+**Step 4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
 
-**5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
+**Step 5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
 
+After you've successfully installed and configured Java8, install dptron with the following command: 
+```sh
+pip install mltronsAutoDataPrep
+```
 
 ## How to install
 
