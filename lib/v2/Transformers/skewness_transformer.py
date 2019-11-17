@@ -35,14 +35,15 @@ class SkewnessTransformer(Transformer, DefaultParamsReadable, DefaultParamsWrita
         """
         try:
             min_value = df.agg({column_name: "min"}).collect()[0][0]
-            min_value = int(min_value)
+            min_value = float(min_value)
             logger.warn("min_value is {}".format(min_value))
             if min_value <= 0:
                 df = df.withColumn(column_name, funct.col(column_name) + abs(min_value) + 0.01)
+
             return df
         except Exception as e:
             logger.error(e)
-    
+
     @staticmethod
     def apply_box_cox(x):
         """
@@ -50,8 +51,14 @@ class SkewnessTransformer(Transformer, DefaultParamsReadable, DefaultParamsWrita
         :param x: row wise values of a column
         :return: updated value with minimum skewness
         """
+        try:
 
-        return float(round(stats.boxcox([x])[0][0], 2))
+            if x is not None:
+                return float(round(stats.boxcox([x])[0][0], 2))
+            return x
+        except Exception as e:
+            logger.error(e)
+            return x
 
     @staticmethod
     def apply_log(x):
@@ -61,9 +68,13 @@ class SkewnessTransformer(Transformer, DefaultParamsReadable, DefaultParamsWrita
         :return: updated value with minimum skewness
         """
         try:
-            return float(round(np.log(x), 3))
+            if x is not None:
+                return float(round(np.log(x), 3))
+            return x
         except Exception as e:
+            print("log error")
             logger.error(e)
+            return float(round(x,3))
 
     def udf_box_cox(self):
         """
@@ -92,6 +103,7 @@ class SkewnessTransformer(Transformer, DefaultParamsReadable, DefaultParamsWrita
         """
         try:
             col_name = self.getColumn()
+            df = df.withColumn(col_name, df[col_name].cast(FloatType()))
             skew_val = df.select(funct.skewness(df[col_name])).collect()[0][0]
             if skew_val is not None:
                 if abs(skew_val) > self.threshold and skew_val < 0:

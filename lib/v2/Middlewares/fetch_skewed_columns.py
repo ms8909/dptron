@@ -18,13 +18,15 @@ class FetchSkewedCol(object):
             for col in columns:
                 result = df.select(funct.countDistinct(col)).collect()[0][0]
                 if result > 50:
+                    col_type = df.select([funct.col(col).rlike(r'[A-Za-z]').alias(col)]).collect()[0][0]
+                    if col_type is not True:
+                        skew_val = df.select(funct.skewness(df[col])).collect()[0][0]
+                        if skew_val is not None:
 
-                    skew_val = df.select(funct.skewness(df[col])).collect()[0][0]
-                    if skew_val is not None:
-                        if abs(skew_val) > self.threshold and skew_val < 0:
-                            self.skewed_col.append(col)
-                        elif abs(skew_val) > self.threshold and skew_val > 0:
-                            self.skewed_col.append(col)
+                            if abs(skew_val) > self.threshold and skew_val < 0:
+                                self.skewed_col.append(col)
+                            elif abs(skew_val) > self.threshold and skew_val > 0:
+                                self.skewed_col.append(col)
 
             logger.warn("Skewed Columns are:")
             logger.warn(self.skewed_col)
