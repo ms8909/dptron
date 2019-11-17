@@ -29,7 +29,7 @@ Installation
 In your terminal, write:
 
 
-**1 ```sh
+```sh
 brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
 ```
 Now, you need to set java8 as your default version. To do this:
