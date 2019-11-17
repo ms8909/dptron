@@ -58,23 +58,24 @@ pip install mltronsAutoDataPrep
 
 It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" to avoid future problems while running Spark.
 
-If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables:
+If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables. To do that, you need to:
 
-**Step 1. Replace "Program Files" with "Progra~1"**
+**1. Rename "Program Files" with "Progra~1"**
 
-**Step 2. Replace "Program Files (x86)" with "Progra~2"**
+**2. Rename "Program Files (x86)" with "Progra~2"**
 ```
 Example: "C:\Program FIles\Java\jdk1.8.0_161" --> "C:\Progra~1\Java\jdk1.8.0_161"
 ```
-Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
+After renaming, make sure you have Java 8 installed and the environment variables correctly defined1:
 
-**Step 3. Download Java JDK 8 from [Java's official website] (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+**3. Download Java JDK 8 from [Java's official website] 
+(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
 
-Set the following environment variables:
+After installing Java SDK 8, set the following environment variables:
 
-**Step 4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
+**4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
 
-**Step 5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
+**5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
 
 After you've successfully installed and configured Java8, install dptron with the following command: 
 ```sh
