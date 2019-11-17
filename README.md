@@ -82,7 +82,7 @@ pip install mltronsAutoDataPrep
 ```
 
 
-### Using DPtron
+## Using dptron
 
 
 ### 1. Reading data functions
