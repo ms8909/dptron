@@ -1,46 +1,37 @@
-# mltrons-auto-data-prep :Tool-kit that automates Data Preparation
-
-## What is it?
-
-**Mltrons-auto-data-prep** is a Python package providing flexible and automated way of 
-data preparation in any size of the raw data.It uses **Machine Learning** and **Deep Leaning**
-techniques with the **pyspark** back-end architecture to clean and prepare TBs of data on clusters at scale.
-
-
-## Main Features
-Here are just a few of the things that **Mltrons-auto-data-prep** does well:
-
-- Data Can be read from multiple Sources such as **S3 bucket** or **Local PC**
-
-- Handle Any size of data even in Tbs using **Py-spark**
-
-- Filter out **Features** with Null values more than the threshold
-
-- Filter out **Features** with same value for all rows
-
-- Automatically detects the data type of features
-
-- Automatically detects datetime features and split in multiple usefull features
-
-- Automatically detects features containing **URLs** and remove duplications
-
-- Automatically detects **Skewed** features and minimize skewness
-
-
-
-## Where to get it
-The source code is currently hosted on **GitHub** at:
-https://github.com/ms8909/mltrons-auto-data-prep
-
-The **pypi** project is at :
+# mltrons dptron: Dirty Data in, Clean Data Out!
 https://pypi.org/project/mltronsAutoDataPrep/
 
-## How to install Java 8 (only supported by pyspark)
-### In Mac Os
+
+## Introduction
+
+Data is the most important element for data analysis. Real world data is unclean with a lot of spelling errors, missing values, formatting issues, skewness, no encoding or aggregation which makes it the most time-consuming & cumbersome task for analysts & scientists. As most of the scientists spend time around 80% of their time cleaning & preparing data, therefore we’re introducing dptron to make that process extremely easier and faster!
+
+Dptron is an in-memory platform built for distributed & scalable data cleaning & preparation. DPtron is written in Python and is built on PySpark to deal with large amounts of data seamlessly. It uses an implementation of machine learning and deep learning algorithms to perform important data cleaning & preparation steps automatically. Dptron is extensible so that developers, analysts & scientists can streamline the process of data cleaning & preparation for better decision making while becoming more productive. 
+
+Decision making is better & easier if the data is clean otherwise it’s garbage-in and garbage-out. 
+
+
+## Important Features
+
+- Supports connection with AWS S3
+- Supports upto 10TB of data size
+- Treats spelling mistakes and other inconsistencies in URLs
+- Detects & treats skewness in data
+- Feature engineering for time variable
+- Treats & fills NULL values by using deep learning (next iteration)
+- Treats spelling mistakes and other inconsistencies in other variables (next iteration)
+
+
+## Get started with dptron!
+
+Installation
+### On Mac Os
 In your terminal, write:
 
-**1. brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
 
+**1 ```sh
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
+```
 Now, you need to set java8 as your default version. To do this:
 First run 
 
