@@ -1,52 +1,40 @@
-# mltrons-auto-data-prep :Tool-kit that automates Data Preparation
-
-## What is it?
-
-**Mltrons-auto-data-prep** is a Python package providing flexible and automated way of 
-data preparation in any size of the raw data.It uses **Machine Learning** and **Deep Leaning**
-techniques with the **pyspark** back-end architecture to clean and prepare TBs of data on clusters at scale.
-
-
-## Main Features
-Here are just a few of the things that **Mltrons-auto-data-prep** does well:
-
-- Data Can be read from multiple Sources such as **S3 bucket** or **Local PC**
-
-- Handle Any size of data even in Tbs using **Py-spark**
-
-- Filter out **Features** with Null values more than the threshold
-
-- Filter out **Features** with same value for all rows
-
-- Automatically detects the data type of features
-
-- Automatically detects datetime features and split in multiple usefull features
-
-- Automatically detects features containing **URLs** and remove duplications
-
-- Automatically detects **Skewed** features and minimize skewness
-
-
-
-## Where to get it
-The source code is currently hosted on **GitHub** at:
-https://github.com/ms8909/mltrons-auto-data-prep
-
-The **pypi** project is at :
+# mltrons dptron: Dirty Data in, Clean Data Out!
 https://pypi.org/project/mltronsAutoDataPrep/
 
-## How to install Java 8 (only supported by pyspark)
-### In Mac Os
-In your terminal, write:
 
-**1. brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
+## Introduction
 
-Now, you need to set java8 as your default version. To do this:
-First run 
+Data is the most important element for data analysis. Real world data is unclean with a lot of spelling errors, missing values, formatting issues, skewness, no encoding or aggregation which makes it the most time-consuming & cumbersome task for analysts & scientists. As most of the scientists spend time around 80% of their time cleaning & preparing data, therefore we’re introducing dptron to make that process extremely easier and faster!
 
-**2. /usr/libexec/java_home -V**
+Dptron is an in-memory platform built for distributed & scalable data cleaning & preparation. DPtron is written in Python and is built on PySpark to deal with large amounts of data seamlessly. It uses an implementation of machine learning and deep learning algorithms to perform important data cleaning & preparation steps automatically. Dptron is extensible so that developers, analysts & scientists can streamline the process of data cleaning & preparation for better decision making while becoming more productive. 
 
-which will output something like the following:
+Decision making is better & easier if the data is clean otherwise it’s garbage-in and garbage-out. 
+
+
+## Important Features
+
+- Supports connection with AWS S3
+- Supports upto 10TB of data size
+- Treats spelling mistakes and other inconsistencies in URLs
+- Detects & treats skewness in data
+- Feature engineering for time variable
+- Treats & fills NULL values by using deep learning (next iteration)
+- Treats spelling mistakes and other inconsistencies in other variables (next iteration)
+
+
+## GETTING STARTED WITH DPTRON - AUTO DATA PREP
+
+### Installing On Mac Os
+Open up your terminal and install Java8 required for pySpark:
+```sh
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8**
+```
+After installing Java8, set it as your default Java version:
+```sh
+/usr/libexec/java_home -V**
+```
+This will output thefollowing:
+
 Matching Java Virtual Machines (3):
 ```
 1.8.0_05, x86_64:   "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
@@ -56,59 +44,56 @@ Matching Java Virtual Machines (3):
 ```
 
 Pick the version you want to be the default (i.e 1.6.0_65-b14-462) then:
+```sh
+export JAVA_HOME=/usr/libexec/java_home -v 1.8**
+```
 
-**3. export JAVA_HOME=/usr/libexec/java_home -v 1.8**
+After you've successfully install Java8, install dptron with the following command: 
+```sh
+pip install mltronsAutoDataPrep
+```
 
-### In Windows Os
+### Installing on Windows
 
-It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" as explained below to avoid future problems when running Spark.
-If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables
+It's important that you replace all the paths that include the folder "Program Files" or "Program Files (x86)" to avoid future problems while running Spark.
 
-**1. Replace "Program Files" with "Progra~1"**
+If you have Java already installed, you still need to fix the JAVA_HOME and PATH variables. To do that, you need to:
 
-**2. Replace "Program Files (x86)" with "Progra~2"**
+**1. Rename "Program Files" with "Progra~1"**
 
+**2. Rename "Program Files (x86)" with "Progra~2"**
 ```
 Example: "C:\Program FIles\Java\jdk1.8.0_161" --> "C:\Progra~1\Java\jdk1.8.0_161"
 ```
-Before you start make sure you have Java 8 installed and the environment variables correctly defined1:
+After renaming, make sure you have Java 8 installed and the environment variables correctly defined1:
 
-**3. Download Java JDK 8 from [Java's official website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+**3. Download Java JDK 8 from [Java's official website] 
+(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
 
-Set the following environment variables:
+After installing Java SDK 8, set the following environment variables:
 
 **4. JAVA_HOME = C:\Progra~1\Java\jdk1.8.0_161**
 
 **5. PATH += C:\Progra~1\Java\jdk1.8.0_161\bin**
 
-
-## How to install
-
+After you've successfully installed and configured Java8, install dptron with the following command: 
 ```sh
 pip install mltronsAutoDataPrep
 ```
 
-## Dependencies
-- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
-- [NumPy](https://www.numpy.org)
-- [pandas](https://pandas.pydata.org)
-- [python-dateutil](https://labix.org/python-dateutil) 
-- [pytz](https://pythonhosted.org/pytz)
-- see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
 
-## How to use 
+## Using dptron
 
 
 ### 1. Reading data functions
 
-- **address** to give the path of the file
+- **address** path of the file
 
-- **local** to give the file exist on local pc or s3 bucket
+- **local** location of the file exist (local pc or s3 bucket)
 
-- **file_format** to give the format of the file (csv,excel,parquet)
+- **file_format** format of the file (csv,excel,parquet)
 
-- **s3** s3 bucket credentials if data on s3 bucket
+- **s3** s3 bucket credentials (applicable only if data on s3 bucket)
 
 
 ```python
@@ -217,3 +202,15 @@ etl_pipeline = EtlPipeline()
 etl_pipeline.custom_skewness_transformer(res)
 res = etl_pipeline.transform(res)
 ```
+
+
+
+
+## Dependencies
+- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
+- [NumPy](https://www.numpy.org)
+- [pandas](https://pandas.pydata.org)
+- [python-dateutil](https://labix.org/python-dateutil) 
+- [pytz](https://pythonhosted.org/pytz)
+- see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
