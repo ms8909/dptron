@@ -87,13 +87,13 @@ pip install mltronsAutoDataPrep
 
 ### 1. Reading data functions
 
-- **address** to give the path of the file
+- **address** path of the file
 
-- **local** to give the file exist on local pc or s3 bucket
+- **local** location of the file exist (local pc or s3 bucket)
 
-- **file_format** to give the format of the file (csv,excel,parquet)
+- **file_format** format of the file (csv,excel,parquet)
 
-- **s3** s3 bucket credentials if data on s3 bucket
+- **s3** s3 bucket credentials (applicable only if data on s3 bucket)
 
 
 ```python
