@@ -22,9 +22,8 @@ Decision making is better & easier if the data is clean otherwise it’s garbage
 - Treats spelling mistakes and other inconsistencies in other variables (next iteration)
 
 
-## Get started with dptron!
+## GETTING STARTED WITH DPTRON - AUTO DATA PREP
 
-Installation
 ### Installing On Mac Os
 Open up your terminal and install Java8 required for pySpark:
 ```sh
@@ -82,20 +81,8 @@ After you've successfully installed and configured Java8, install dptron with th
 pip install mltronsAutoDataPrep
 ```
 
-## How to install
 
-
-
-## Dependencies
-- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
-- [NumPy](https://www.numpy.org)
-- [pandas](https://pandas.pydata.org)
-- [python-dateutil](https://labix.org/python-dateutil) 
-- [pytz](https://pythonhosted.org/pytz)
-- see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
-
-## How to use 
+### Using DPtron
 
 
 ### 1. Reading data functions
@@ -215,3 +202,15 @@ etl_pipeline = EtlPipeline()
 etl_pipeline.custom_skewness_transformer(res)
 res = etl_pipeline.transform(res)
 ```
+
+
+
+
+## Dependencies
+- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
+- [NumPy](https://www.numpy.org)
+- [pandas](https://pandas.pydata.org)
+- [python-dateutil](https://labix.org/python-dateutil) 
+- [pytz](https://pythonhosted.org/pytz)
+- see full list of dependicies [here](https://github.com/ms8909/mltrons-auto-data-prep/blob/master/requirements.txt)
