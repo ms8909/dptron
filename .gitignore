@@ -20,6 +20,8 @@ venv.bak/
 .idea/
 *.log
 *.csv
+*.zip
+
 *.xlsx
 *.pem
 lib/imputed_models/*
