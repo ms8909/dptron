@@ -8,12 +8,18 @@ from lib.v2.Transformers.url_transformer import UrlTransformer
 from lib.v2.Pipelines.etl_pipeline import EtlPipeline
 from pyspark.ml import Pipeline
 from lib.v2.Logger.logs import file_logs, logger
-
+from lib.v2.imports import *
 import pandas as pd
 
 file_logs("mltrons")
 
-res = rf.read(address="./run/dataset/brittleness-index.csv", local="yes", file_format="csv", s3={})
+
+# res = rf.read(address="./run/dataset/test.csv", local="yes", file_format="csv", s3={})
+# df = res.withColumn('res', res['res'].cast(DoubleType()))
+# df.show()
+# sys.exit()
+
+res = rf.read(address="./run/dataset/rollingsales_Manhattan.csv", local="yes", file_format="csv", s3={})
 
 drop_col = DropNullValueCol()
 columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
@@ -41,15 +47,14 @@ print(res.columns)
 
 etl_pipeline = EtlPipeline()
 etl_pipeline.custom_filling_missing_val(res)
-print(res.dtypes)
 res = etl_pipeline.transform(res)
 print("columns are printing")
 print(res.columns)
 
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_skewness_transformer(res)
-# res = etl_pipeline.transform(res)
-# print("columns are printing")
-# print(res.columns)
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_skewness_transformer(res)
+res = etl_pipeline.transform(res)
+print("columns are printing")
+print(res.columns)
 
-res.write.csv('./run/testing/brittleness-index_clean2.csv', header=True)
+res.write.csv('./run/testing/rollingsales_Manhattan_clean2.csv', header=True)

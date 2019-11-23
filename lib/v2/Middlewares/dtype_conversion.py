@@ -25,7 +25,7 @@ class DtypeConversion(object):
         p = df.limit(count).toPandas()
 
         numeric_columns = []
-        columns = self.string_variables(df,dropped_variables )  # only take string variables
+        columns = self.string_variables(df, dropped_variables)  # only take string variables
         for c in columns:
             counter = 0
             error = []
@@ -67,10 +67,21 @@ class DtypeConversion(object):
 
         return s_variables
 
-    def find_numerical_features(self,df,existed_features=[]):
-        numeric_columns =[]
+    def find_numerical_features(self, df, existed_features=[]):
+        numeric_columns = []
+        total_size = df.count()
         for i in existed_features:
-            col_type = df.select([funct.col(i).rlike(r'[+-]?([0-9]*[.])?[0-9]+').alias(i)]).collect()[0][0]
-            if col_type is True:
-                numeric_columns.append(i)
+            try:
+                val = df.withColumn(i, df[i].cast(DoubleType()))
+                total_valid_values = val.dropna().count()
+                if total_valid_values > 0:
+                    pct_float = (total_valid_values / total_size) * 100
+                    if pct_float > 95:
+                        numeric_columns.append(i)
+            except Exception as e:
+                print("exception")
+                print(e)
+                pass
+        print("num col")
+        print(numeric_columns)
         return numeric_columns
