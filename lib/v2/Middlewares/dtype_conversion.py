@@ -67,3 +67,10 @@ class DtypeConversion(object):
 
         return s_variables
 
+    def find_numerical_features(self,df,existed_features=[]):
+        numeric_columns =[]
+        for i in existed_features:
+            col_type = df.select([funct.col(i).rlike(r'[+-]?([0-9]*[.])?[0-9]+').alias(i)]).collect()[0][0]
+            if col_type is True:
+                numeric_columns.append(i)
+        return numeric_columns

@@ -13,20 +13,12 @@ from lib.v2.Logger.logs import file_logs,logger
 import pandas as pd
 file_logs("mltrons")
 
-df = pd.read_csv("./run/traffic_voilation.csv")
 res = read.read("./run/traffic_voilation.csv", file_format='csv')
-# df_pd = pd.read_csv("./run/1data_clean.csv")
-
-# res =res.select(['Description'])
-
 
 # 845824
-#['Description', 'Location', 'Latitude', 'Longitude', 'Year', 'Make', 'Charge', 'Driver City']
-# ['Description', 'Location', 'Latitude', 'Longitude', 'Year', 'Make', 'Charge', 'Driver City']
-print(res.columns)
 # #### reading function
-# # res = read.read("./run/4alan_data_clean.csv", file_format='csv')
-# # res.show()
+res = read.read("./run/4alan_data_clean.csv", file_format='csv')
+res.show()
 #
 # #### drop null value columns
 # drop_col = DropNullValueCol()
