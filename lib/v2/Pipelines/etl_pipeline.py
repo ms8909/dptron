@@ -510,16 +510,14 @@ class EtlPipeline():
             self.convert_nans_into_null(df)
             # numeric_variables = self.find_variables_types(df.dtypes)
             numeric_variables = self.fetch_numerical_columns(df)
+
             self.convert_str_to_double(df,numeric_variables)
             # self.int_to_double(df.dtypes, numeric_variables)
 
             self.handle_missing_values(numeric_variables)
-            print("numeric variables")
-            print(numeric_variables)
-            print(df.dtypes)
             model = Pipeline(stages=self.stages)
             self.pipeline = model.fit(df)
-            return model
+
         except Exception as e:
             logger.error(e)
 
