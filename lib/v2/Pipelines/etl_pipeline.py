@@ -8,6 +8,7 @@ from ..Transformers.drop_transformer import *
 from ..Transformers.skewness_transformer import *
 from ..Transformers.type_to_double_transformer import *
 from ..Transformers.change_columns_order import *
+from ..Transformers.convert_nan_to_null import *
 # Including Middlewares
 
 from ..Middlewares.dtype_conversion import *
@@ -477,15 +478,48 @@ class EtlPipeline():
         except Exception as e:
             print(e)
 
+    def convert_nans_into_null(self, df):
+        """
+        Replace Nans ,None none,N/A,NA with
+        :param df:
+        :return:
+        """
+        model = NanToNullConvertor(list_of_col=df.columns)
+        self.stages += [model]
+
+    def fetch_numerical_columns(self, df):
+
+        """Find all variables containing urls"""
+        n = DtypeConversion()
+        variables = n.find_numerical_features(df, existed_features=df.columns)
+        return variables
+
+    def convert_str_to_double(self, df, numerical_col):
+        """
+
+        :param df:
+        :param numerical_col:
+        :return:
+        """
+        model = TypeDoubleTransformer(list_of_col = numerical_col)
+        self.stages += [model]
+
     def custom_filling_missing_val(self, df):
         try:
             self.param['existed_variables'] = df.columns
-            numeric_variables = self.find_variables_types(df.dtypes)
-            self.int_to_double(df.dtypes, numeric_variables)
+            self.convert_nans_into_null(df)
+            # numeric_variables = self.find_variables_types(df.dtypes)
+            numeric_variables = self.fetch_numerical_columns(df)
+            self.convert_str_to_double(df,numeric_variables)
+            # self.int_to_double(df.dtypes, numeric_variables)
+
             self.handle_missing_values(numeric_variables)
+            print("numeric variables")
+            print(numeric_variables)
+            print(df.dtypes)
             model = Pipeline(stages=self.stages)
             self.pipeline = model.fit(df)
-
+            return model
         except Exception as e:
             logger.error(e)
 
