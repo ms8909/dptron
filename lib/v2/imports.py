@@ -20,4 +20,4 @@ from urllib.parse import urlparse
 import re
 from scipy import stats
 import numpy as np
-from pyspark.sql.types import FloatType,IntegerType,DoubleType
+from pyspark.sql.types import FloatType,IntegerType,DoubleType,StringType
