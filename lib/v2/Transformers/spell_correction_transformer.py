@@ -1,6 +1,5 @@
 from ..imports import *
-from textblob import TextBlob
-
+from pattern.en import suggest
 
 class SpellCorrectionTransformer(Transformer, DefaultParamsReadable, DefaultParamsWritable):
     column = Param(Params._dummy(), "column", "column for transformation", typeConverter=TypeConverters.toString)
@@ -33,7 +32,7 @@ class SpellCorrectionTransformer(Transformer, DefaultParamsReadable, DefaultPara
         """
         df = df.withColumn(col_name,
                            funct.regexp_replace(funct.trim(funct.lower(funct.col(col_name).cast("string"))),
-                                                "[^a-zA-Z0-9]", ""))
+                                                "[^a-zA-Z0-9]", " "))
         return df
 
     def apply_spell_correction(self, x):
@@ -43,9 +42,13 @@ class SpellCorrectionTransformer(Transformer, DefaultParamsReadable, DefaultPara
         :return:
         """
         try:
-            res = TextBlob(x).correct()
-            print(res)
-            return res
+            pattern = re.compile(r"(.)\1{2,}")
+            list_of_elem = x.split(" ")
+            clean_x = [pattern.sub(r"\1\1", i) for i in list_of_elem]
+            print(clean_x)
+            suggest_val = [suggest(i)[0][0] for i in clean_x]
+            return " ".join(suggest_val)
+
         except Exception as e:
             logger.error(e)
 

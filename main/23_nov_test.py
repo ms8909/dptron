@@ -8,10 +8,12 @@ from lib.v2.Transformers.url_transformer import UrlTransformer
 from lib.v2.Pipelines.etl_pipeline import EtlPipeline
 from pyspark.ml import Pipeline
 from lib.v2.Logger.logs import file_logs, logger
+from pattern.en import suggest
 from lib.v2.imports import *
 import pandas as pd
-
 file_logs("mltrons")
+
+
 
 
 # res = rf.read(address="./run/dataset/test.csv", local="yes", file_format="csv", s3={})
@@ -27,17 +29,18 @@ from autocorrect import spell
 # spells = SpellChecker()
 #
 # print(spells.correction("hte"))
-# sys.exit()
 
-# res = rf.read(address="./run/dataset/spell.csv", local="yes", file_format="csv", s3={})
-# etl_pipeline = EtlPipeline()
-# etl_pipeline.custom_spell_transformer(res,['col1','col2'])
-# res2 = etl_pipeline.transform(res)
-# print("columns are printing")
-# print(res2.columns)
-# res2.show()
-# sys.exit()
-res = rf.read(address="./run/dataset/rollingsales_Manhattan.csv", local="yes", file_format="csv", s3={})
+res = rf.read(address="./run/dataset/spell.csv", local="yes", file_format="csv", s3={})
+res.show()
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_spell_transformer(res,['col1','col2'])
+res2 = etl_pipeline.transform(res)
+print("columns are printing")
+print(res2.columns)
+res2.show()
+sys.exit()
+# res = rf.read(address="./run/dataset/rollingsales_Manhattan.csv", local="yes", file_format="csv", s3={})
 
 drop_col = DropNullValueCol()
 columns_to_drop = drop_col.delete_var_with_null_more_than(res, threshold=30)
