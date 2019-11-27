@@ -32,6 +32,7 @@ class TypeDoubleTransformer(Transformer, DefaultParamsReadable, DefaultParamsWri
         return df.withColumn(self.getColumn(), funct.col(self.getColumn()).cast(DoubleType()))
         """
         for i in self.list_of_col:
+            df = df.withColumn(i, funct.regexp_replace(funct.col(i), "[^a-zA-Z0-9.]", ""))
             df = df.withColumn(i, df[i].cast(DoubleType()))
         return df
 

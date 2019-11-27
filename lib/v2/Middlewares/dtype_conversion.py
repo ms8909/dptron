@@ -72,6 +72,7 @@ class DtypeConversion(object):
         total_size = df.count()
         for i in existed_features:
             try:
+                df = df.withColumn(i, funct.regexp_replace(funct.col(i), "[^a-zA-Z0-9.]", ""))
                 val = df.withColumn(i, df[i].cast(DoubleType()))
                 total_valid_values = val.dropna().count()
                 if total_valid_values > 0:
@@ -81,7 +82,7 @@ class DtypeConversion(object):
             except Exception as e:
                 print("exception")
                 print(e)
-                pass
+
         print("num col")
         print(numeric_columns)
         return numeric_columns

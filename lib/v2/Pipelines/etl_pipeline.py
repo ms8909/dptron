@@ -9,6 +9,7 @@ from ..Transformers.skewness_transformer import *
 from ..Transformers.type_to_double_transformer import *
 from ..Transformers.change_columns_order import *
 from ..Transformers.convert_nan_to_null import *
+from ..Transformers.spell_correction_transformer import SpellCorrectionTransformer
 # Including Middlewares
 
 from ..Middlewares.dtype_conversion import *
@@ -442,7 +443,6 @@ class EtlPipeline():
         self.param['categorical_variables'] = encode_variables_new
 
     def handle_missing_values(self, variables):
-
         imputer = Imputer(
             inputCols=variables,
             outputCols=variables
@@ -513,14 +513,34 @@ class EtlPipeline():
 
             self.convert_str_to_double(df,numeric_variables)
             # self.int_to_double(df.dtypes, numeric_variables)
-
-            self.handle_missing_values(numeric_variables)
+            # df.toPandas().to_csv("checkc.csv",index=False)
+            # stages = self.handle_missing_values(numeric_variables)
             model = Pipeline(stages=self.stages)
             self.pipeline = model.fit(df)
 
         except Exception as e:
             logger.error(e)
 
+
+    def custom_spell_transformer(self,df,columns):
+        """
+
+        :param df:
+        :param columns:
+        :return:
+        """
+
+        stages = self.custom_spell_pipeline(columns)
+        model = Pipeline(stages=stages)
+        self.pipeline = model.fit(df)
+
+    def custom_spell_pipeline(self,columns):
+        stages = []
+        for v in columns:
+            print(columns)
+            time_data = SpellCorrectionTransformer(column=v)
+            stages += [time_data]
+        return stages
     def custom_date_transformer(self, df):
         """
 

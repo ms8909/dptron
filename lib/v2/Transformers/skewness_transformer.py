@@ -3,7 +3,6 @@ from ..imports import *
 
 class SkewnessTransformer(Transformer, DefaultParamsReadable, DefaultParamsWritable):
     column = Param(Params._dummy(), "column", "column for transformation", typeConverter=TypeConverters.toString)
-
     def __init__(self, column='', threshold=0.7):
         super(SkewnessTransformer, self).__init__()
         # lazy workaround - a transformer needs to have these attributes
