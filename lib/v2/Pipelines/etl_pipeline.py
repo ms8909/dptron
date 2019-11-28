@@ -494,14 +494,14 @@ class EtlPipeline():
         variables = n.find_numerical_features(df, existed_features=df.columns)
         return variables
 
-    def convert_str_to_double(self, df, numerical_col):
+    def convert_str_to_double(self, numerical_col):
         """
 
         :param df:
         :param numerical_col:
         :return:
         """
-        model = TypeDoubleTransformer(list_of_col = numerical_col)
+        model = TypeDoubleTransformer(list_of_col=numerical_col)
         self.stages += [model]
 
     def custom_filling_missing_val(self, df):
@@ -511,18 +511,16 @@ class EtlPipeline():
             # numeric_variables = self.find_variables_types(df.dtypes)
             numeric_variables = self.fetch_numerical_columns(df)
 
-            self.convert_str_to_double(df,numeric_variables)
+            self.convert_str_to_double(numeric_variables)
             # self.int_to_double(df.dtypes, numeric_variables)
-            # df.toPandas().to_csv("checkc.csv",index=False)
-            # stages = self.handle_missing_values(numeric_variables)
+            self.handle_missing_values(numeric_variables)
             model = Pipeline(stages=self.stages)
             self.pipeline = model.fit(df)
 
         except Exception as e:
             logger.error(e)
 
-
-    def custom_spell_transformer(self,df,columns):
+    def custom_spell_transformer(self, df, columns):
         """
 
         :param df:
@@ -534,13 +532,13 @@ class EtlPipeline():
         model = Pipeline(stages=stages)
         self.pipeline = model.fit(df)
 
-    def custom_spell_pipeline(self,columns):
+    def custom_spell_pipeline(self, columns):
         stages = []
         for v in columns:
-            print(columns)
             time_data = SpellCorrectionTransformer(column=v)
             stages += [time_data]
         return stages
+
     def custom_date_transformer(self, df):
         """
 
