@@ -45,7 +45,6 @@ class SpellCorrectionTransformer(Transformer, DefaultParamsReadable, DefaultPara
             pattern = re.compile(r"(.)\1{2,}")
             list_of_elem = x.split(" ")
             clean_x = [pattern.sub(r"\1\1", i) for i in list_of_elem]
-            print(clean_x)
             suggest_val = [suggest(i)[0][0] for i in clean_x]
             return " ".join(suggest_val)
 
@@ -67,7 +66,6 @@ class SpellCorrectionTransformer(Transformer, DefaultParamsReadable, DefaultPara
         :return:
         """
         try:
-            print("inside transformer")
             col_name = self.getColumn()
             df = self.removing_special_characters(df, col_name)
             df = df.withColumn(col_name, self.udf_spell_correction()(funct.col(col_name)))

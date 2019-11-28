@@ -204,6 +204,20 @@ res = etl_pipeline.transform(res)
 ```
 
 
+### 8. Remove Spelling mistakes 
+
+- Provide list of features in which contains spelling mistakes
+
+```python
+from mltronsAutoDataPrep.lib.v2.Pipelines.etl_pipeline import EtlPipeline
+
+
+etl_pipeline = EtlPipeline()
+etl_pipeline.custom_spell_transformer(res,['col1','col2'])
+res2 = etl_pipeline.transform(res)
+
+```
+
 
 
 ## Dependencies

@@ -79,10 +79,12 @@ class DtypeConversion(object):
                     pct_float = (total_valid_values / total_size) * 100
                     if pct_float > 95:
                         numeric_columns.append(i)
+
             except Exception as e:
                 print("exception")
                 print(e)
 
-        print("num col")
-        print(numeric_columns)
+        logger.warn("numerical features:")
+        logger.warn(numeric_columns)
+
         return numeric_columns
