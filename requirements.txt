@@ -1,0 +1,9 @@
+pyspark==2.4.0
+numpy==1.16.4
+nltk==3.4.4
+boto3==1.9.238
+Pattern==3.6
+scipy==1.2.1
+pandas==0.24.2
+datawig==0.1.10
+python_dateutil==2.8.1
