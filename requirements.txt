@@ -1,5 +1,5 @@
 pyspark==2.4.0
-numpy==1.16.4
+numpy==1.22.0
 nltk==3.4.4
 boto3==1.9.238
 Pattern==3.6
